@@ -1,0 +1,60 @@
+<div class="searchBar">
+    <mat-form-field class="search" appearance="outline">
+            <mat-label>Filter</mat-label>
+        <input matInput type="text" placeholder="Search" [(ngModel)]="searchKey" (keyup)="filterData()">
+        <button mat-button *ngIf="searchKey" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+</div>
+<table mat-table [dataSource]="tableData" matSort>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let element">{{element.name}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="department">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+        <td mat-cell *matCellDef="let element"> {{element.dept}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="semester">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Semester </th>
+        <td mat-cell *matCellDef="let element"> {{element.sem}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-button color="primary">
+                <mat-icon (click)="onEdit(element)">edit</mat-icon>
+            </button>
+            <button mat-button color="warn" (click)="onDelete(element.key)">
+                <mat-icon>delete_outline</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="loading">
+        <td mat-footer-cell *matFooterCellDef colspan="2">
+            Loading...
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="noData">
+        <td mat-footer-cell *matFooterCellDef colspan="2">
+            No Data Found
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':tableData!=null}"></tr>
+    <tr mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(tableData!=null && tableData.length == 0)}">
+    </tr>
+</table>
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
+</mat-paginator>

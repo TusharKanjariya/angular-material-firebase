@@ -1,0 +1,18 @@
+table{
+    width: 80%;
+    margin: 0 auto;
+}
+.mat-paginator{
+    width: 80%;
+    margin: 0 auto;
+}
+.hide{
+    display: none;
+}
+.searchBar{
+    width: 80%;
+    margin: 0 auto;
+}
+.search{
+    width: 80%;
+}

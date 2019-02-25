@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Student Database</span>
+    <div class="showDesktop">
+      <a routerLink="/" mat-button>Home</a>
+      <a routerLink="add" mat-button>Add</a>
+    </div>
+
+    <span class="spacer"></span>
+
+    <div class="showMobile">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <a routerLink="/" mat-menu-item>
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+        </a>
+        <a routerLink="add" mat-menu-item>
+          <mat-icon>add</mat-icon>
+          <span>Add</span>
+        </a>
+      </mat-menu>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

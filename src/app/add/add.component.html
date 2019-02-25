@@ -1,0 +1,17 @@
+<div class="form-container" [formGroup]="service.form">
+    <input type="hidden" placeholder="Name*" formControlName="key">
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Name*" formControlName="name">
+        <mat-error>Enter name</mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Department*" formControlName="dept">
+        <mat-error>Enter Department</mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Semester*" formControlName="sem">
+        <mat-error>Enter Semester</mat-error>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" [disabled]="service.form.invalid" (click)="addData()">Add Data</button>
+</div>
