@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import { FormControl,FormGroup,Validators } from '@angular/forms';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from '@angular/router';
+
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
-  constructor(private db:AngularFireDatabase) { }
+
+  isLogged:boolean = false;
+
+  constructor(private route:Router,private db:AngularFireDatabase,private auth:AngularFireAuth) { }
   studentRef:AngularFireList<any>;
   form = new FormGroup({
     key : new FormControl(''),
@@ -14,6 +20,10 @@ export class StudentService {
     dept : new FormControl('',Validators.required)
   });
 
+  loginForm = new FormGroup({
+    email : new FormControl('',[Validators.required,Validators.email]),
+    password : new FormControl('',[Validators.minLength(6),Validators.required])
+  })
   addStudent(student){
     this.studentRef = this.db.list("/students");
     if(this.form.valid){
@@ -31,7 +41,6 @@ export class StudentService {
   fillForm(data){
     this.form.setValue(data);
   }
-
   updateStudent(data){
     this.studentRef = this.db.list("/students");
     this.studentRef.update(data.key,{
@@ -40,7 +49,16 @@ export class StudentService {
       sem : data.sem
     })
   }
-
+  checkUserStatus(){
+    this.auth.auth.onAuthStateChanged(user => {
+      if(!user){
+        this.isLogged = false;
+        this.route.navigate(['/']);
+      }else{
+        this.isLogged = true;
+      }
+    });
+  }
   deleteStudent(key){
     this.studentRef = this.db.list("/students");
     this.studentRef.remove(key);

@@ -1,11 +1,13 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" *ngIf="service.isLogged">
   <mat-toolbar-row>
     <span>Student Database</span>
     <div class="showDesktop">
-      <a routerLink="/" mat-button>Home</a>
+      <a routerLink="/dashboard" mat-button>Dashboard</a>
       <a routerLink="add" mat-button>Add</a>
-    </div>
 
+      <span class="spacer"></span>
+      <a routerLink="/" mat-button (click)="logout()">Logout</a>
+    </div>
     <span class="spacer"></span>
 
     <div class="showMobile">
@@ -13,13 +15,17 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <a routerLink="/" mat-menu-item>
+        <a routerLink="/dashboard" mat-menu-item>
           <mat-icon>home</mat-icon>
-          <span>Home</span>
+          <span>Dashboard</span>
         </a>
         <a routerLink="add" mat-menu-item>
           <mat-icon>add</mat-icon>
           <span>Add</span>
+        </a>
+        <a routerLink="/" (click)="logout()" mat-menu-item>
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
         </a>
       </mat-menu>
     </div>

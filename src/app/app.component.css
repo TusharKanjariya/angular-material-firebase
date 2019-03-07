@@ -1,15 +1,18 @@
-
-  
-.spacer {
+ .spacer {
     flex: 1 1 auto;
   } 
 
   /* // Small devices (landscape phones, 576px and up) */
-@media (max-width: 576px) {
-  .showDekstop{
-      display: none;
+
+  @media (max-width: 650px) {
+      .showDesktop {
+          display: none;
+      }
+      
+      .fixedWidth {
+          width: 100%;
+      }
   }
-}
 
 /* // Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {

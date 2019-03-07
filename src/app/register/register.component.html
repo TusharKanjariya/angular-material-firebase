@@ -1,0 +1,18 @@
+<form class="fixedWidth" [formGroup]="service.loginForm">
+  <h1>Register</h1>
+  <mat-form-field class="control">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" placeholder="Email" formControlName="email">
+    <mat-error>Enter Email</mat-error>
+    <mat-error>Enter Valid Email</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="control">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" placeholder="Password" formControlName="password">
+    <mat-error>Enter Password</mat-error>
+    <mat-hint>Password length must be minimum 6 characters.</mat-hint>
+  </mat-form-field>
+
+  <button mat-flat-button color="primary" (click)="register()" [disabled]="service.loginForm.invalid">Register</button>
+</form>

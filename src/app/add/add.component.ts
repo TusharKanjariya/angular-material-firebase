@@ -13,6 +13,7 @@ export class AddComponent implements OnInit {
   constructor(public material:MaterialDesign,public service:StudentService,public snackBar:MatSnackBar,public dialogRef:MatDialogRef<AddComponent>) { }
 
   ngOnInit() {
+    this.service.checkUserStatus();
   }
   addData(){
     this.service.addStudent(this.service.form.value);

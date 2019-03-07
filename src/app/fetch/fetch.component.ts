@@ -20,6 +20,9 @@ export class FetchComponent implements OnInit {
   constructor(private service: StudentService, public material: MaterialDesign,public dialog:MatDialog,public snackBar:MatSnackBar) { }
   tableData : MatTableDataSource<any>;
   ngOnInit() {
+
+    this.service.checkUserStatus();
+
     this.students = this.service.getStudent().snapshotChanges().subscribe(student => {
       let array = student.map(student => {
         return {

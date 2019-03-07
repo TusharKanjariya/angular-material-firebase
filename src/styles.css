@@ -5,3 +5,6 @@
 body{
     font-family: 'Roboto', sans-serif;
 }
+.center{
+    margin: 0 auto;
+}

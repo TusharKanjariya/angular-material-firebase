@@ -1,0 +1,14 @@
+.fixedWidth{
+    width: 30%;
+    margin: 0 auto;
+}
+.control{
+    width: 100%;
+}
+  /* // Small devices (landscape phones, 576px and up) */
+
+ @media (max-width: 576px) {
+     .fixedWidth {
+         width: 100%;
+     }
+ }
