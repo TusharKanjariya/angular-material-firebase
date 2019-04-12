@@ -1,4 +1,4 @@
-# StudentAngularFire
+# A demo web-app of Angular Angular-Material Firebase
 
 ## Angular 7.3.0 with Firebase Realtime Database and Authentication Services.
 
